@@ -1,0 +1,968 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Sports | Sumanth Sports Club</title>
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #071a2d;
+            color: white;
+        }
+
+        /* =========================
+           NAVIGATION
+        ========================= */
+
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+
+            background: rgba(0, 0, 0, 0.90);
+
+            box-shadow: 0 3px 12px rgba(0,0,0,0.4);
+        }
+
+        .navbar {
+            max-width: 1200px;
+            margin: auto;
+
+            padding: 18px 25px;
+
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 21px;
+            font-weight: bold;
+        }
+
+        .logo span {
+            color: #ffc107;
+        }
+
+        .nav-links {
+            list-style: none;
+
+            display: flex;
+            gap: 25px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: white;
+
+            font-weight: bold;
+
+            transition: 0.3s;
+        }
+
+        .nav-links a:hover,
+        .nav-links .active {
+            color: #ffc107;
+        }
+
+
+        /* =========================
+           HERO
+        ========================= */
+
+        .hero {
+            min-height: 70vh;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            text-align: center;
+
+            padding: 130px 20px 70px;
+
+            background:
+                linear-gradient(
+                    rgba(39, 208, 208, 0.65),
+                    rgba(19, 165, 198, 0.75)
+                ),
+                url("images/sports-bg.jpg");
+
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
+
+        .hero-content {
+            max-width: 850px;
+        }
+
+        .hero small {
+            color: #ffc107;
+
+            font-size: 16px;
+
+            font-weight: bold;
+
+            letter-spacing: 4px;
+        }
+
+        .hero h1 {
+            font-size: 65px;
+
+            margin: 15px 0;
+        }
+
+        .hero h1 span {
+            color: #ffc107;
+        }
+
+        .hero p {
+            font-size: 19px;
+
+            line-height: 1.7;
+
+            color: #eeeeee;
+        }
+
+
+        /* =========================
+           SPORTS SECTION
+        ========================= */
+
+        .sports-section {
+            padding: 90px 7%;
+
+            background: #ced2d6;
+
+            text-align: center;
+        }
+
+        .section-title {
+            color: #ffc107;
+
+            font-size: 15px;
+
+            font-weight: bold;
+
+            letter-spacing: 4px;
+
+            margin-bottom: 10px;
+        }
+
+        .sports-section h2 {
+            font-size: 42px;
+
+            margin-bottom: 15px;
+        }
+
+        .intro {
+            max-width: 750px;
+
+            margin: 0 auto 50px;
+
+            color: #cfcfcf;
+
+            line-height: 1.7;
+        }
+
+
+        /* =========================
+           SPORTS CARDS
+        ========================= */
+
+        .sports-container {
+            max-width: 1250px;
+
+            margin: auto;
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(3, 1fr);
+
+            gap: 28px;
+        }
+
+        .sport-card {
+
+            min-height: 360px;
+
+            position: relative;
+
+            overflow: hidden;
+
+            border-radius: 15px;
+
+            background-size: cover;
+
+            background-position: center;
+
+            display: flex;
+
+            align-items: flex-end;
+
+            box-shadow:
+                0 8px 25px rgba(0,0,0,0.4);
+
+            transition: 0.4s;
+        }
+
+
+        /* =========================
+           SPORTS BACKGROUND IMAGES
+        ========================= */
+
+        .cricket {
+            background-image:
+                url("cricket.jpeg");
+        }
+
+        .football {
+            background-image:
+                url("football.jpg");
+        }
+
+        .badminton {
+            background-image:
+                url("badminton.webp");
+        }
+
+        .volleyball {
+            background-image:
+                url("volleyball.jpg");
+        }
+
+        .basketball {
+            background-image:
+                url("basketball.jpg");
+        }
+
+        .tennis {
+            background-image:
+                url("tennis.webp");
+        }
+
+
+        /* =========================
+           CARD OVERLAY
+        ========================= */
+
+        .sport-card::before {
+            content: "";
+
+            position: absolute;
+
+            inset: 0;
+
+            background:
+                linear-gradient(
+                    transparent 25%,
+                    rgba(0,0,0,0.90)
+                );
+
+            transition: 0.4s;
+        }
+
+        .sport-card:hover {
+            transform: translateY(-10px);
+
+            box-shadow:
+                0 15px 35px rgba(191, 224, 105, 0.6);
+        }
+
+        .sport-card:hover::before {
+            background:
+                linear-gradient(
+                    transparent 10%,
+                    rgba(201, 227, 84, 0.95)
+                );
+        }
+
+
+        /* =========================
+           CARD CONTENT
+        ========================= */
+
+        .sport-content {
+            position: relative;
+
+            z-index: 2;
+
+            padding: 28px;
+
+            text-align: left;
+
+            width: 100%;
+        }
+
+        .sport-icon {
+            font-size: 42px;
+
+            margin-bottom: 5px;
+        }
+
+        .sport-content h3 {
+            color: #ffc107;
+
+            font-size: 28px;
+
+            margin-bottom: 8px;
+        }
+
+        .sport-content p {
+            color: #eeeeee;
+
+            line-height: 1.6;
+
+            font-size: 15px;
+        }
+
+        .learn-btn {
+            display: inline-block;
+
+            margin-top: 15px;
+
+            padding: 9px 18px;
+
+            background: #ffc107;
+
+            color: #111;
+
+            text-decoration: none;
+
+            font-size: 13px;
+
+            font-weight: bold;
+
+            border-radius: 4px;
+
+            transition: 0.3s;
+        }
+
+        .learn-btn:hover {
+            background: white;
+        }
+
+
+        /* =========================
+           SPORTS FEATURES
+        ========================= */
+
+        .features {
+            padding: 80px 7%;
+
+            background: #102f49;
+
+            text-align: center;
+        }
+
+        .features h2 {
+            font-size: 38px;
+
+            margin-bottom: 40px;
+        }
+
+        .feature-container {
+            max-width: 1100px;
+
+            margin: auto;
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(4, 1fr);
+
+            gap: 20px;
+        }
+
+        .feature {
+            padding: 30px 20px;
+
+            background: #173d5c;
+
+            border-radius: 10px;
+
+            border-bottom: 4px solid #ffc107;
+        }
+
+        .feature-icon {
+            font-size: 40px;
+
+            margin-bottom: 12px;
+        }
+
+        .feature h3 {
+            color: #ffc107;
+
+            margin-bottom: 10px;
+        }
+
+        .feature p {
+            color: #ddd;
+
+            line-height: 1.5;
+        }
+
+
+        /* =========================
+           JOIN SECTION
+        ========================= */
+
+        .join {
+            padding: 80px 20px;
+
+            text-align: center;
+
+            background: #ffc107;
+
+            color: #111;
+        }
+
+        .join h2 {
+            font-size: 40px;
+
+            margin-bottom: 15px;
+        }
+
+        .join p {
+            font-size: 18px;
+
+            margin-bottom: 25px;
+        }
+
+        .join-btn {
+            display: inline-block;
+
+            padding: 14px 30px;
+
+            background: #071a2d;
+
+            color: white;
+
+            text-decoration: none;
+
+            font-weight: bold;
+
+            border-radius: 5px;
+
+            transition: 0.3s;
+        }
+
+        .join-btn:hover {
+            background: #000;
+        }
+
+
+        /* =========================
+           FOOTER
+        ========================= */
+
+        footer {
+            background: #030b13;
+
+            color: white;
+
+            text-align: center;
+
+            padding: 25px;
+
+            line-height: 1.8;
+        }
+
+        footer span {
+            color: #ffc107;
+        }
+
+
+        /* =========================
+           TABLET
+        ========================= */
+
+        @media (max-width: 900px) {
+
+            .navbar {
+                flex-direction: column;
+
+                gap: 15px;
+            }
+
+            .nav-links {
+                flex-wrap: wrap;
+
+                justify-content: center;
+
+                gap: 15px;
+            }
+
+            .hero h1 {
+                font-size: 48px;
+            }
+
+            .sports-container {
+                grid-template-columns:
+                    repeat(2, 1fr);
+            }
+
+            .feature-container {
+                grid-template-columns:
+                    repeat(2, 1fr);
+            }
+        }
+
+
+        /* =========================
+           MOBILE
+        ========================= */
+
+        @media (max-width: 600px) {
+
+            .hero {
+                background-attachment: scroll;
+            }
+
+            .hero h1 {
+                font-size: 38px;
+            }
+
+            .hero p {
+                font-size: 16px;
+            }
+
+            .sports-container {
+                grid-template-columns: 1fr;
+            }
+
+            .feature-container {
+                grid-template-columns: 1fr;
+            }
+
+            .sports-section h2 {
+                font-size: 32px;
+            }
+
+            .sport-card {
+                min-height: 330px;
+            }
+        }
+
+    </style>
+</head>
+
+
+<body>
+
+
+    <!-- =========================
+         NAVIGATION
+    ========================= -->
+
+    <header>
+
+        <nav class="navbar">
+
+            <div class="logo">
+                🏆 SUMANTH <span>SPORTS CLUB</span>
+            </div>
+
+            <ul class="nav-links">
+
+                <li>
+                    <a href="index.html">Home</a>
+                </li>
+
+                <li>
+                    <a href="about.html">About</a>
+                </li>
+
+                <li>
+                    <a href="sports.html" class="active">Sports</a>
+                </li>
+
+                <li>
+                    <a href="events.html">Events</a>
+                </li>
+
+                <li>
+                    <a href="register.html">Register</a>
+                </li>
+
+                <li>
+                    <a href="contact.html">Contact</a>
+                </li>
+
+            </ul>
+
+        </nav>
+
+    </header>
+
+
+    <!-- =========================
+         HERO
+    ========================= -->
+
+    <section class="hero">
+
+        <div class="hero-content">
+
+            <small>
+                SUMANTH SPORTS CLUB
+            </small>
+
+            <h1>
+                OUR
+                <span>SPORTS</span>
+            </h1>
+
+            <p>
+                Discover your passion, improve your skills,
+                stay fit and compete with confidence.
+                Choose your favorite sport and become a champion.
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         SPORTS
+    ========================= -->
+
+    <section class="sports-section">
+
+        <div class="section-title">
+            PLAY • TRAIN • WIN
+        </div>
+
+        <h2>
+            Choose Your Sport
+        </h2>
+
+        <p class="intro">
+            Sumanth Sports Club provides opportunities for players
+            to train and participate in different sports. Explore
+            our sports programs and find the game you love.
+        </p>
+
+
+        <div class="sports-container">
+
+
+            <!-- CRICKET -->
+
+            <div class="sport-card cricket">
+
+                <div class="sport-content">
+
+                    <div class="sport-icon">
+                        🏏
+                    </div>
+
+                    <h3>
+                        Cricket
+                    </h3>
+
+                    <p>
+                        Develop your batting, bowling and fielding
+                        skills with regular practice and matches.
+                    </p>
+
+                    <a href="register.html" class="learn-btn">
+                        JOIN CRICKET
+                    </a>
+
+                </div>
+
+            </div>
+
+
+            <!-- FOOTBALL -->
+
+            <div class="sport-card football">
+
+                <div class="sport-content">
+
+                    <div class="sport-icon">
+                        ⚽
+                    </div>
+
+                    <h3>
+                        Football
+                    </h3>
+
+                    <p>
+                        Improve speed, stamina, teamwork and
+                        football techniques.
+                    </p>
+
+                    <a href="register.html" class="learn-btn">
+                        JOIN FOOTBALL
+                    </a>
+
+                </div>
+
+            </div>
+
+
+            <!-- BADMINTON -->
+
+            <div class="sport-card badminton">
+
+                <div class="sport-content">
+
+                    <div class="sport-icon">
+                        🏸
+                    </div>
+
+                    <h3>
+                        Badminton
+                    </h3>
+
+                    <p>
+                        Build agility, coordination and fast
+                        reflexes through badminton training.
+                    </p>
+
+                    <a href="register.html" class="learn-btn">
+                        JOIN BADMINTON
+                    </a>
+
+                </div>
+
+            </div>
+
+
+            <!-- VOLLEYBALL -->
+
+            <div class="sport-card volleyball">
+
+                <div class="sport-content">
+
+                    <div class="sport-icon">
+                        🏐
+                    </div>
+
+                    <h3>
+                        Volleyball
+                    </h3>
+
+                    <p>
+                        Learn teamwork, serving, attacking,
+                        blocking and defensive skills.
+                    </p>
+
+                    <a href="register.html" class="learn-btn">
+                        JOIN VOLLEYBALL
+                    </a>
+
+                </div>
+
+            </div>
+
+
+            <!-- BASKETBALL -->
+
+            <div class="sport-card basketball">
+
+                <div class="sport-content">
+
+                    <div class="sport-icon">
+                        🏀
+                    </div>
+
+                    <h3>
+                        Basketball
+                    </h3>
+
+                    <p>
+                        Improve your shooting, dribbling,
+                        passing and defensive abilities.
+                    </p>
+
+                    <a href="register.html" class="learn-btn">
+                        JOIN BASKETBALL
+                    </a>
+
+                </div>
+
+            </div>
+
+
+            <!-- TENNIS -->
+
+            <div class="sport-card tennis">
+
+                <div class="sport-content">
+
+                    <div class="sport-icon">
+                        🎾
+                    </div>
+
+                    <h3>
+                        Tennis
+                    </h3>
+
+                    <p>
+                        Develop your movement, serving,
+                        strokes and match skills.
+                    </p>
+
+                    <a href="register.html" class="learn-btn">
+                        JOIN TENNIS
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         FEATURES
+    ========================= -->
+
+    <section class="features">
+
+        <h2>
+            Why Play With Us?
+        </h2>
+
+        <div class="feature-container">
+
+
+            <div class="feature">
+
+                <div class="feature-icon">
+                    🏃
+                </div>
+
+                <h3>
+                    Fitness
+                </h3>
+
+                <p>
+                    Improve your fitness and maintain
+                    a healthy lifestyle.
+                </p>
+
+            </div>
+
+
+            <div class="feature">
+
+                <div class="feature-icon">
+                    🤝
+                </div>
+
+                <h3>
+                    Teamwork
+                </h3>
+
+                <p>
+                    Learn teamwork, communication
+                    and leadership.
+                </p>
+
+            </div>
+
+
+            <div class="feature">
+
+                <div class="feature-icon">
+                    🏆
+                </div>
+
+                <h3>
+                    Competition
+                </h3>
+
+                <p>
+                    Participate in tournaments and
+                    competitive matches.
+                </p>
+
+            </div>
+
+
+            <div class="feature">
+
+                <div class="feature-icon">
+                    ⭐
+                </div>
+
+                <h3>
+                    Development
+                </h3>
+
+                <p>
+                    Improve your skills and become
+                    a better athlete.
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         JOIN
+    ========================= -->
+
+    <section class="join">
+
+        <h2>
+            Ready To Become A Champion?
+        </h2>
+
+        <p>
+            Join Sumanth Sports Club and start your sports journey today.
+        </p>
+
+        <a href="register.html" class="join-btn">
+            REGISTER NOW
+        </a>
+
+    </section>
+
+
+    <!-- =========================
+         FOOTER
+    ========================= -->
+
+    <footer>
+
+        <p>
+            © 2026
+            <span>Sumanth Sports Club</span>.
+            All Rights Reserved.
+        </p>
+
+        <p>
+            B.Tech Web Project
+        </p>
+
+    </footer>
+
+
+</body>
+</html>
